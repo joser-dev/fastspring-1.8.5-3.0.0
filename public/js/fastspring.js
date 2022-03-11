@@ -7,19 +7,19 @@ function dataCallbackFunction(data)
 		for(var j = 0; j < data.groups[i].items.length; j++)
 		{
 			prods[data.groups[i].items[j].pid] = data.groups[i].items[j];
-			items = items + "<option value='" + data.groups[i].items[j].pid + "'>" + data.groups[i].items[j].display + "</option>";
+			items = items + "<option value='" + data.groups[i].items[j].pid + "'>" + data.groups[i].items[j].display + " - "+ data.groups[i].items[j].pid + "</option>";
 			for(var k = 0; k < data.groups[i].items[j].groups.length; k++)
 			{
 				for(var l = 0; l < data.groups[i].items[j].groups[k].items.length; l++)
 				{
-					items = items + "<option value='" + data.groups[i].items[j].groups[k].items[l].pid + "'>" + data.groups[i].items[j].groups[k].items[l].display + "</option>";
+					items = items + "<option value='" + data.groups[i].items[j].groups[k].items[l].pid + "'>" + data.groups[i].items[j].display + " - "+ data.groups[i].items[j].pid + "</option>";
 				}
 			}
 		}
 	}
 	window.parent.prods = prods;
-	$("#bbpathidselect").html(items);
-	$("#attribpathidselect").html(items);
+	jQuery("#bbpathidselect").html(items);
+	jQuery("#attribpathidselect").html(items);
 }
 
 
@@ -50,7 +50,7 @@ function bbinsertfastspring(e)
 	rcIcon = jQuery("#TB_ajaxContent input[name='rcIcon']:checked").val();
 	Icon = jQuery("#TB_ajaxContent input.bbiconradio:checked").val();
 
-console.log("vcrfc: " + vcrfc);
+
 
 	var buy = '<span data-fsc-item-path-value="' + bb_product + '" data-fsc-item-path="' + bb_product + '" data-fsc-item-selection-smartdisplay-inverse><a href="#" class="' + bb_class + '" ';
 	buy = buy + 'data-fsc-item-path-value="' + bb_product + '" data-fsc-item-path="' + bb_product + '" ';
@@ -153,7 +153,7 @@ function painsertfastspring(e)
 	if(attrib_radio != 'image')
 	{
 
-console.log(attrib_product);
+
 		if(attrib_radio == 'path')
 		{
 			attrib = attrib + 'data-fsc-item-pid>' + window.parent.prods[attrib_product]["pid"] + '<!--' + attrib_product + ' - Path--></span>';
